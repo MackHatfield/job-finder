@@ -1,30 +1,40 @@
-import { useGraphQL } from 'graphql-react';
+import { useGraphQL } from "graphql-react";
+import JobCard from "../components/JobCard";
 
 export default function Jobs() {
   const { loading, cacheValue: { data } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
-      options.url = 'https://api.graphql.jobs'
+      options.url = "https://api.graphql.jobs";
     },
     operation: {
       query: `
-        {
+      {
+        jobs {
+          title
+          description
           cities {
             name
           }
+          company {
+            name
+          }
+          applyUrl
         }
-      `
+      }
+      `,
     },
     loadOnMount: true,
     loadOnReload: true,
-    loadOnReset: true
+    loadOnReset: true,
   });
 
   return data ? (
-    <list>
-      {
-        data.cities.map(city => <li>{city.name}</li>)
-      }
-    </list>
-  ) : <h1>oops</h1>
-  
+    <div>
+      {data.jobs.map((job) => (
+        <JobCard job={job} />
+      ))}
+    </div>
+  ) : (
+    <h1>oops</h1>
+  );
 }
