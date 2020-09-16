@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import { useRouter } from 'next/router';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <PageContainer>
       <ContentContainer>
         <PageTitle>Job Finder</PageTitle>
         <Caption>Find Awesome Jobs Today!</Caption>
-        <Button>CHECK IT OUT</Button>
+        <Button onClick={() => router.push('/jobs')}>CHECK IT OUT</Button>
       </ContentContainer>
     </PageContainer>
   );

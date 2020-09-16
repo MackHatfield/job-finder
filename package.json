@@ -8,7 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "graphql-react": "^11.0.4",
     "next": "9.5.3",
+    "next-graphql-react": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "^5.2.0"
