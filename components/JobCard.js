@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const JobCard = ({ job }) => {
   let citiesText = '';
+  const applyUrl = job.applyUrl ? job.applyUrl : '';
 
   if (job.cities && job.cities.length > 0) {
     job.cities.forEach((city, index) => {
@@ -24,6 +25,9 @@ const JobCard = ({ job }) => {
     <DescriptionContainer>
       {`${job.description.substring(0, 100)}...`}
     </DescriptionContainer>
+    <ApplyButton>
+      <ApplyLink href={applyUrl}>Apply Now</ApplyLink>
+    </ApplyButton>
   </Container>
   )
 }
@@ -61,5 +65,31 @@ const DescriptionContainer = styled.div`
   margin-top: 10px;
   margin-left: 10px;
   padding-left: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `
+const ApplyLink = styled.a`
+  color: white;
+`;
+
+const ApplyButton = styled.div`
+  width: 40%;
+  height: 30px;
+  background-color: #1cd860;
+  border: 2px solid white;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  padding-top: 3px;
+  box-sizing: border-box;
+  &:hover {
+    ${ApplyButton} {
+      background-color: white;
+      border: 2px solid #1cd860;
+      border-radius: 3px;
+    }
+    ${ApplyLink} {
+      color: #1cd860;
+    }
+  }
+`;
