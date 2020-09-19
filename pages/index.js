@@ -1,29 +1,30 @@
 import styled from "styled-components";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <PageContainer>
-      <ContentContainer>
-        <PageTitle>Job Finder</PageTitle>
-        <Caption>Find Awesome Jobs Today!</Caption>
-        <Button onClick={() => router.push('/jobs')}>CHECK IT OUT</Button>
-      </ContentContainer>
-    </PageContainer>
+    <Layout>
+      <PageContainer>
+        <ContentContainer>
+          <PageTitle>Job Finder</PageTitle>
+          <Caption>Find Awesome Jobs Today!</Caption>
+          <Button onClick={() => router.push("/jobs")}>CHECK IT OUT</Button>
+        </ContentContainer>
+      </PageContainer>
+    </Layout>
   );
 }
 
 const PageContainer = styled.div`
   width: 100%;
-  display: flex;
+  height: 100%;
   background-color: pink;
-  flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  height: 600px;
-`
+`;
 const ContentContainer = styled.div`
   flex-direction: row;
   text-align: center;
@@ -33,7 +34,7 @@ const ContentContainer = styled.div`
 const PageTitle = styled.h1`
   font-weight: 600;
   font-size: 4.5em;
-  letter-spacing: .25em;
+  letter-spacing: 0.25em;
   text-decoration: underline #1cd860;
 `;
 
