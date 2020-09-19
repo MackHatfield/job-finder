@@ -2,10 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 
 const JobCard = ({ job }) => {
+  let citiesText = '';
+
+  if (job.cities && job.cities.length > 0) {
+    job.cities.forEach((city, index) => {
+      citiesText += `${city.name}${index === job.cities.length - 1 ? '' : ', '}`
+    });
+  }
+
   return (
   <Container>
     <JobTitle>{job.title}</JobTitle>
-    <CompanyName>{job.company.name}</CompanyName>
+    <div>
+      <Label>Company:</Label>
+      <Text>{job.company.name}</Text>
+    </div>
+    <div>
+      <Label>Cities:</Label>
+      <Text>{citiesText !== '' ? citiesText : 'N/A'}</Text>
+    </div>
+    <DescriptionContainer>
+      {`${job.description.substring(0, 100)}...`}
+    </DescriptionContainer>
   </Container>
   )
 }
@@ -13,8 +31,6 @@ const JobCard = ({ job }) => {
 export default JobCard;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: left;
   max-width: 350px;
   border: 2px solid black;
@@ -26,9 +42,24 @@ const Container = styled.div`
 const JobTitle = styled.h3`
   text-decoration: underline #1cd860;
   margin-left: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
 `
-
-const CompanyName = styled.h4`
+const Label = styled.h4`
+  display: inline;
   margin-left: 10px;
+`
+const Text = styled.p`
+  display: inline;
+  margin-left: 5px;
+  color: #a1a1a1;
 `;
+
+const DescriptionContainer = styled.div`
+  width: 75%;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-left: 5px;
+  margin-bottom: 5px;
+`
