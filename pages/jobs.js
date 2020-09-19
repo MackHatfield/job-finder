@@ -1,5 +1,6 @@
-import { useGraphQL } from "graphql-react";
-import JobCard from "../components/JobCard";
+import { useGraphQL } from 'graphql-react';
+import JobCard from '../components/JobCard';
+import Layout from '../components/Layout';
 
 export default function Jobs() {
   const { loading, cacheValue: { data } = {} } = useGraphQL({
@@ -29,11 +30,11 @@ export default function Jobs() {
   });
 
   return data ? (
-    <div>
-      {data.jobs.map((job) => (
-        <JobCard job={job} />
+    <Layout>
+      {data.jobs.map((job, index) => (
+        <JobCard key={index} job={job} />
       ))}
-    </div>
+    </Layout>
   ) : (
     <h1>oops</h1>
   );
