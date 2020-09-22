@@ -6,7 +6,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <Layout>
+    <Layout currentPage='home'>
       <PageContainer>
         <ContentContainer>
           <PageTitle>Job Finder</PageTitle>

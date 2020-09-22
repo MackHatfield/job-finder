@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import Navbar from './Navbar';
 
 const Layout = (props) => {
+  const { currentPage } = props;
   return (
     <Container>
+      <Navbar currentPage={currentPage} />
       <Content>{props.children}</Content>
     </Container>
   );
