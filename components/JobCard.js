@@ -35,12 +35,12 @@ const JobCard = ({ job }) => {
 export default JobCard;
 
 const Container = styled.div`
+  margin-top: 10px;
   align-items: left;
   max-width: 350px;
+  max-height: 400px;
   border: 2px solid black;
   border-radius: 5px;
-  margin-left: 100px;
-  margin-top: 25px;
 `
 
 const JobTitle = styled.h3`
