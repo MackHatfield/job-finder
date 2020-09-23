@@ -10,7 +10,6 @@ const Navbar = ({ currentPage }) => {
         <Link href='/'><LinkText selected={currentPage === 'home'}>Home</LinkText></Link>
         <Link href='/jobs'><LinkText selected={currentPage === 'jobs'}>Job Search</LinkText></Link>
       </LinkContainer>
-      
     </Container>
   )
 };
@@ -38,11 +37,6 @@ const LinkContainer = styled.span`
 const LinkText = styled.a`
   margin-right: 10px;
   color: ${props => props.selected ? '#1cd860' : 'black'};
-  &:hover {
-    ${LinkText} {
-      text-shadow: 1px 1px 2px gray;
-    }
-  }
 `;
 
 export default Navbar;

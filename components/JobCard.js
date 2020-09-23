@@ -91,5 +91,5 @@ const ApplyButton = styled.div`
     ${ApplyLink} {
       color: #1cd860;
     }
-  }
+  };
 `;

@@ -32,11 +32,18 @@ export default function Jobs() {
 
   return data ? (
     <Layout currentPage='jobs'>
-      {data.jobs.map((job, index) => (
-        <JobCard key={index} job={job} />
-      ))}
+      <Container>
+        {data.jobs.map((job, index) => (
+          <JobCard key={index} job={job} />
+        ))}
+      </Container>
     </Layout>
   ) : (
     <h1>oops</h1>
   );
 }
+
+const Container = styled.div`
+  flex-direction: row;
+  flex: 1
+`;
