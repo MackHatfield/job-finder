@@ -45,6 +45,9 @@ export default function Jobs() {
 }
 
 const Container = styled.div`
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  display: flex;
   flex-direction: row;
-  flex: 1
+  max-width: 80%;
 `;
