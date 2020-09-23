@@ -1,4 +1,5 @@
 import { useGraphQL } from 'graphql-react';
+import styled from 'styled-components';
 import JobCard from '../components/JobCard';
 import Layout from '../components/Layout';
 import Search from '../components/Search';

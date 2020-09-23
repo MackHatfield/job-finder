@@ -82,14 +82,4 @@ const ApplyButton = styled.div`
   text-align: center;
   padding-top: 3px;
   box-sizing: border-box;
-  &:hover {
-    ${ApplyButton} {
-      background-color: white;
-      border: 2px solid #1cd860;
-      border-radius: 3px;
-    }
-    ${ApplyLink} {
-      color: #1cd860;
-    }
-  };
 `;
