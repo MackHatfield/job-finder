@@ -5,11 +5,28 @@ import Layout from '../components/Layout';
 import Search from '../components/Search';
 import _ from 'lodash';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const filterJobs = (jobArr, filters) => {
-  const { roleFilter } = filters;
-  return jobArr.filter(job => job.title.toLowerCase().includes(roleFilter.toLowerCase()));
+  let filteredJobs = [];
+
+  const { roleFilter, city } = filters;
+  filteredJobs = jobArr.filter(job => job.title.toLowerCase().includes(roleFilter.toLowerCase()));
+
+  if (city !== '') {
+    filteredJobs = filteredJobs.filter(job => {
+      let hasCity = false;
+      for (let i = 0; i < job.cities.length; i++) {
+        if (city === job.cities[i].name) {
+          hasCity = true;
+        }
+      }
+
+      return hasCity;
+    });
+  }
+
+  return filteredJobs;
 }
 
 export default function Jobs() {
@@ -47,7 +64,7 @@ export default function Jobs() {
 
   return data ? (
     <Layout currentPage='jobs'>
-      <Search searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
+      <Search jobs={data.jobs} searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
       <Container>
         {
           _.isEmpty(searchFilters) ? data.jobs.map((job, index) => (
