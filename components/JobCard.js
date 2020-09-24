@@ -19,6 +19,10 @@ const JobCard = ({ job }) => {
       <Text>{job.company.name}</Text>
     </div>
     <div>
+      <Label>Commitment:</Label>
+      <Text>{job.commitment.title}</Text>
+    </div>
+    <div>
       <Label>Cities:</Label>
       <Text>{citiesText !== '' ? citiesText : 'N/A'}</Text>
     </div>

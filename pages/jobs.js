@@ -20,20 +20,23 @@ export default function Jobs() {
       options.url = "https://api.graphql.jobs";
     },
     operation: {
-      query: `
-      {
-        jobs {
-          title
-          description
-          cities {
-            name
+      query:
+        `{
+          jobs {
+            title
+            description
+            commitment {
+              title
+            }
+            cities {
+              name
+            }
+            company {
+              name
+            }
+            applyUrl
           }
-          company {
-            name
-          }
-          applyUrl
         }
-      }
       `,
     },
     loadOnMount: true,
@@ -45,7 +48,6 @@ export default function Jobs() {
   return data ? (
     <Layout currentPage='jobs'>
       <Search searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
-
       <Container>
         {
           _.isEmpty(searchFilters) ? data.jobs.map((job, index) => (
