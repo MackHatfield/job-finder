@@ -3,8 +3,18 @@ import styled from 'styled-components';
 import JobCard from '../components/JobCard';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
+import _ from 'lodash';
+
+import { useState } from 'react';
+
+const filterJobs = (jobArr, filters) => {
+  const { roleFilter } = filters;
+  return jobArr.filter(job => job.title.toLowerCase().includes(roleFilter.toLowerCase()));
+}
 
 export default function Jobs() {
+  const [searchFilters, setSearchFilters] = useState({});
+
   const { loading, cacheValue: { data } = {} } = useGraphQL({
     fetchOptionsOverride(options) {
       options.url = "https://api.graphql.jobs";
@@ -31,12 +41,19 @@ export default function Jobs() {
     loadOnReset: true,
   });
 
+
   return data ? (
     <Layout currentPage='jobs'>
+      <Search searchFilters={searchFilters} setSearchFilters={setSearchFilters} />
+
       <Container>
-        {data.jobs.map((job, index) => (
+        {
+          _.isEmpty(searchFilters) ? data.jobs.map((job, index) => (
           <JobCard key={index} job={job} />
-        ))}
+          )) : filterJobs(data.jobs, searchFilters).map((job, index) => (
+            <JobCard key={index} job={job} />
+          ))
+        }
       </Container>
     </Layout>
   ) : (

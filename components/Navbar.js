@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const Navbar = ({ currentPage }) => {
-  console.log(currentPage);
   return (
     <Container>
       <AppTitle>Job Finder</AppTitle>
